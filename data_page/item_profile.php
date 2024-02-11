@@ -282,7 +282,7 @@ if ($result->num_rows > 0) {
 
     function confirmInquiry() {
         // Assuming you have a variable houseId containing the house ID
-        var houseId = <?php echo json_encode($houseId); ?>;
+        var houseId = <php echo json_encode($houseId); ?>;
     
         // Create a new XMLHttpRequest object
         var xhr = new XMLHttpRequest();

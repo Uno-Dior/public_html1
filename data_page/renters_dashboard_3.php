@@ -6,20 +6,38 @@ session_start(); // Add this line
 require('../data_page/navbar.php');
 
 if (!isset($_SESSION["tenant"])) {
-   header("Location: ../data_page/renters_login.php");
+    header("Location: ../data_page/renters_login.php");
 }
 
 require_once '../mysql/conn.php';
-           
+
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $adn = "DELETE FROM rental_options WHERE id = ?";
-    $stmt = $mydb->getConnection()->prepare($adn);
-    $stmt->bind_param('s', $id);
-    $stmt->execute();
-    $stmt->close();
 
-    if ($stmt) {
+    // Fetch data from rental_options before deletion
+    $selectQuery = "SELECT house_id, renter_user_id, owner_user_id FROM rental_options WHERE id = ?";
+    $stmtSelect = $mydb->getConnection()->prepare($selectQuery);
+    $stmtSelect->bind_param('s', $id);
+    $stmtSelect->execute();
+    $stmtSelect->bind_result($house_id, $renter_user_id, $owner_user_id);
+    $stmtSelect->fetch();
+    $stmtSelect->close();
+
+    // Now you have the data, you can proceed with the deletion
+    $deleteQuery = "DELETE FROM rental_options WHERE id = ?";
+    $stmtDelete = $mydb->getConnection()->prepare($deleteQuery);
+    $stmtDelete->bind_param('s', $id);
+    $stmtDelete->execute();
+    $stmtDelete->close();
+
+    if ($stmtDelete) {
+        // Use the fetched data to delete the corresponding row in chat_users table
+        $deleteChatUsersQuery = "DELETE FROM chat_users WHERE house_id = ? AND user_id = ? AND owner_user_id = ?";
+        $stmtChatUsers = $mydb->getConnection()->prepare($deleteChatUsersQuery);
+        $stmtChatUsers->bind_param('sss', $house_id, $renter_user_id, $owner_user_id);
+        $stmtChatUsers->execute();
+        $stmtChatUsers->close();
+
         $success = "Deleted" && header("refresh:1; url=renters_dashboard_3.php");
     } else {
         $err = "Try Again Later";
