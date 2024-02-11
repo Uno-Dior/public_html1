@@ -12,66 +12,56 @@ if (empty($_SESSION["tenant"])) {
 // Get the user ID (userid)
 $userid = $_SESSION["tenant"]["userid"];
 
-// Get the house ID from the URL
+// Get the ID and house ID from the URL
+$id = isset($_GET['id']) ? $_GET['id'] : null;
 $houseId = isset($_GET['house_id']) ? $_GET['house_id'] : null;
 
-// Fetch data from rental_options table based on house_id
-$sqlHouseOptions = "SELECT * FROM rental_options WHERE house_id = ?";
-$stmtHouseOptions = $conn->prepare($sqlHouseOptions);
+// Fetch data from chat_users and house_rentals based on the house ID
+$sqlFetchData = "
+    SELECT cu.*, hr.*
+    FROM chat_users cu
+    LEFT JOIN house_rentals hr ON cu.house_id = hr.house_id
+    WHERE cu.id = ?
+    LIMIT 1
+";
 
-if ($stmtHouseOptions === false) {
+$stmtFetchData = $conn->prepare($sqlFetchData);
+
+if ($stmtFetchData === false) {
     die('Error in SQL query: ' . $conn->error);
 }
 
-$stmtHouseOptions->bind_param('s', $houseId);
-$stmtHouseOptions->execute();
-$resultHouseOptions = $stmtHouseOptions->get_result();
+$stmtFetchData->bind_param('s', $id);
+$stmtFetchData->execute();
+$resultFetchData = $stmtFetchData->get_result();
 
-if ($resultHouseOptions === false) {
-    die('Error in SQL result: ' . $stmtHouseOptions->error);
+if ($resultFetchData === false) {
+    die('Error in SQL result: ' . $stmtFetchData->error);
 }
 
-if ($resultHouseOptions->num_rows > 0) {
-    $houseOptionsData = $resultHouseOptions->fetch_assoc();
+if ($resultFetchData->num_rows > 0) {
+    $userData = $resultFetchData->fetch_assoc();
 
-    // Save houseOptionsData in the session
-    $_SESSION['houseOptionsData'] = $houseOptionsData;
+    // Use $userData as needed
+    $houseImage = $userData['house_image'];
+    $houseName = $userData['house_name'];
+    $houseType = $userData['house_type'];
+
+    // Display the user details
+    echo '
+        <div class="user-detail">
+            <img src="' . $houseImage . '" alt="' . $houseName . '">
+            <div class="details">
+                <span><a style="color:black">' . $houseName . '</a></span>
+                <p>' . $houseType . '</p>
+            </div>
+        </div>
+    ';
 } else {
     // Handle the case where no rows are returned
-    $houseOptionsData = array(); // Initialize as an empty array
+    echo 'User not found';
 }
-
-// Fetch data from rental_options table to get owner_user_id
-$sqlRentalOptions = "SELECT owner_user_id FROM rental_options WHERE house_id = ?";
-$stmtRentalOptions = $conn->prepare($sqlRentalOptions);
-
-if ($stmtRentalOptions === false) {
-    die('Error in SQL query: ' . $conn->error);
-}
-
-$stmtRentalOptions->bind_param('s', $houseId);
-$stmtRentalOptions->execute();
-$resultRentalOptions = $stmtRentalOptions->get_result();
-
-if ($resultRentalOptions === false) {
-    die('Error in SQL result: ' . $stmtRentalOptions->error);
-}
-
-if ($resultRentalOptions->num_rows > 0) {
-    $rentalOptionsData = $resultRentalOptions->fetch_assoc();
-    $ownerUserId = $rentalOptionsData['owner_user_id'];
-
-    // Save rentalOptionsData in the session
-    $_SESSION['rentalOptionsData'] = $rentalOptionsData;
-} else {
-    // Handle the case where no rows are returned
-    $ownerUserId = null;
-}
-
-// Rest of your HTML and PHP code...
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -120,7 +110,6 @@ if ($resultRentalOptions->num_rows > 0) {
                                 <span><a style="color:black"><?php echo $_SESSION['houseOptionsData']['house_name']; ?></a></span>
                                 <p><?php echo $_SESSION['houseOptionsData']['house_type']; ?></p>
                             </div>
-                            <p>HELLO WROLD</p>
                             </div>
                         </div>
                         
