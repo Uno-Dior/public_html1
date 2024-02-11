@@ -1,0 +1,291 @@
+/************************************************** STYLE **************************************************/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  max-width: 100%;
+  text-decoration: none;
+  list-style: none;
+  transition: all 0.5s ease-in-out;
+}
+
+body {
+  display: flex;
+  margin: 0;
+  background: #e8effd;
+}
+
+/************************************************** DASHBOARD **************************************************/
+
+.dashboard_sidebar {
+  width: 300px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 20px 2%;
+  height: 100%;
+  font-size: 30px;
+  position: fixed;
+  z-index: 100;
+  background: white 0% 0% no-repeat padding-box;
+  border: solid #000038 3px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.logo {
+  max-width: 200px;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.dash1 ul li + li {
+  margin-bottom: 10px;
+}
+
+.dash1 .logout {
+  padding-top: 10px;
+  padding-bottom: 25px;
+  transition: all 0.5ms ease-in-out;
+}
+
+.dash1 h6 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.dashboard_sidebar .dash1 a,
+.logout a {
+  font-weight: 400;
+  font-size: 18px;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  text-decoration: none;
+}
+
+.dashboard_sidebar li {
+  padding: 10px 10px 10px 30px;
+  border-radius: 8px;
+  transition: all 0.5s ease-in-out;
+}
+
+.dashboard_sidebar .dash1 li:hover,
+li.active {
+  background: #f8c230;
+  transition: all 0.5s ease-in-out;
+}
+
+.logout {
+  position: absolute;
+}
+
+/************************************************** MAIN **************************************************/
+
+.main {
+  position: relative;
+  margin-left: 310px;
+  padding: 20px;
+  width: 100%;
+}
+
+.header-title {
+  color: white;
+  background: #000038;
+  padding: 20px 20px 40px 20px;
+  border-radius: 8px;
+}
+
+.header-title ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0 0 30px 0;
+  margin: 0;
+  font-size: 20px;
+}
+
+.header-title h2 {
+  margin-bottom: -10px;
+}
+
+.header-title ol li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  font-size: 16px;
+}
+
+.header-title ol li + li {
+  padding-left: 10px;
+}
+
+.header-title ol li + li::before {
+  display: inline-block;
+  padding-right: 10px;
+  color: #4668a2;
+  content: "/";
+}
+
+.data_stat {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+}
+
+.monthly_payments,
+.num_inquiries {
+  color: white;
+  font-size: 20px;
+  background: #000038;
+  padding: 15px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.num_visits {
+  color: white;
+  color: white;
+  font-size: 20px;
+  background: #000038;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.data_stat label {
+  background: white;
+  width: 150px;
+  height: 40px;
+  display: flex;
+}
+
+.stat_container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+}
+
+.data_diagram_inquiries,
+.data_summary {
+  color: white;
+  font-size: 22px;
+  background: #000038;
+  padding: 20px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.data_summary {
+  margin-right: -15px;
+  height: 100%;
+}
+
+.container1 {
+  background: white;
+  display: flex;
+  height: 50px;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.container2 {
+  background: white;
+  display: flex;
+  height: 220px;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+/************************************************** MANAGE INQUIRIES **************************************************/
+
+.dataInquiries {
+  margin-top: 20px;
+  display: flex;
+}
+
+.inquiries {
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 20px;
+  background: #000038;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/************************************************** MANAGE PROPERTIES **************************************************/
+
+.data_properties {
+  margin-top: 20px;
+  display: flex;
+}
+
+.properties {
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 20px;
+  background: #000038;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.properties form {
+  margin: 50px 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.properties form input + label,
+.properties form textarea + label,
+.properties form select + label,
+.properties form div + label,
+.properties form div + div,
+.properties form input + div {
+  margin-top: 50px;
+}
+
+.properties form button {
+  width: 200px;
+  height: 40px;
+}
+
+.data_properties .row {
+  width: 100%;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+/************************************************** MANAGE PROPERTIES **************************************************/
+
+.header-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.tenant_profile {
+  margin-top: 20px;
+  display: flex;
+}
+
+.profile_view {
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 20px;
+  background: #000038;
+  padding: 20px;
+  border-radius: 8px;
+}

@@ -1,0 +1,1050 @@
+/************************************************** STYLE **************************************************/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  max-width: 100%;
+  text-decoration: none;
+  list-style: none;
+  transition: all 0.5s ease-in-out;
+}
+
+body {
+  padding: 120px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: #e8effd;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+section {
+  flex: 1;
+}
+
+/************************************************** HEADER **************************************************/
+
+.navigation_bar {
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  min-width: 1920px;
+  height: 90px;
+  background: #f8c230 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: fixed;
+  z-index: 100;
+}
+
+.navbar_container {
+  width: 100%;
+  top: 0;
+  padding: 20px 5%;
+  max-height: 90px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  justify-content: space-between;
+}
+
+/******************** LOGO & SEARCH BAR ********************/
+
+.sea_container {
+  display: flex;
+}
+
+.logo {
+  width: 200px;
+  position: relative;
+  margin-right: 0px;
+}
+
+.search_container {
+  max-width: 400px;
+}
+
+form {
+  max-width: 100%;
+  margin-right: 6px;
+  position: static;
+}
+
+.navbar_container .search_container {
+  float: left;
+  width: 300px;
+  position: static;
+}
+
+.navbar_container input[type="text"] {
+  height: 50px;
+  width: 100%;
+  padding: 6px;
+  padding-left: 20px;
+  margin: 8px;
+  font-size: 20px;
+  border: none;
+  border-radius: 30px;
+  position: static;
+}
+
+@media screen and (max-width: 1100px) {
+  .navbar_container .search-container {
+    float: left;
+  }
+  .navbar_container a,
+  .navbar_container input[type="text"] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .navbar_container input[type="text"] {
+    border: 1px solid #ccc;
+  }
+}
+
+/******************** NAVIGATION ICONS ********************/
+
+.nav_container {
+  display: flex;
+}
+
+.nav_container ul li img {
+  width: 50px;
+}
+
+li button {
+  background: #f8c230;
+  border: none;
+}
+
+li,
+a,
+button {
+  color: black;
+  cursor: pointer;
+}
+
+.navbar_links {
+  list-style: none;
+}
+
+.navbar_links li {
+  display: inline-block;
+  padding-left: 50px;
+}
+
+.navbar_links li.active::before {
+  content: "";
+  position: absolute;
+  left: 1;
+  bottom: 0;
+  height: 5px;
+  width: 49px;
+  background: #000038;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.navbar_links li a {
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/******************** SETTING ICON ********************/
+
+img.toggle_btn {
+  position: sticky;
+  cursor: pointer;
+  display: none;
+  z-index: 100;
+}
+
+.btn_setting {
+  width: 50px;
+}
+
+.dropdown_menu {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 90px;
+  width: 20%;
+  height: 0;
+  margin-right: 10px;
+  background: #f8c230;
+  opacity: 0.8;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 100;
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+  height: 181px;
+}
+
+.dropdown_menu li {
+  padding: 7px 7px 7px 50px;
+  display: flex-end;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.dropdown_menu li.drop {
+  padding: 7px 7px 7px 50px;
+  display: flex-end;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.dropdown_menu li:hover {
+  background: rgba(250, 250, 250, 0.4);
+}
+
+.dropdown_menu li.drop:hover {
+  background: rgba(250, 250, 250, 0.4);
+}
+
+.dropdown_menu {
+  display: block;
+}
+
+.dropdown_menu li a {
+  margin: 0 0 0 50px;
+}
+
+.dropdown_menu li.drop a.drop-link {
+  margin: 0 0 0 50px;
+}
+
+.dropdown_menu li img {
+  position: absolute;
+  width: 30px;
+}
+
+/************************************************** MAIN **************************************************/
+
+.mains {
+  display: flex;
+  position: relative;
+  height: 150vh;
+}
+
+.hive_icon {
+  top: -70px;
+  left: 1056px;
+  width: 785px;
+  height: 902px;
+  background: transparent url("../data_image/hive.png") 0% 0% no-repeat
+    padding-box;
+  mix-blend-mode: darken;
+  opacity: 1;
+  position: absolute;
+}
+
+.comb_icon {
+  top: 726px;
+  left: 827px;
+  width: 680px;
+  height: 485px;
+  transform: matrix(-0.68, 0.57, 0.64, 0.77, 0, 0);
+  background: transparent url("../data_image/comb.png") 0% 0% no-repeat
+    padding-box;
+  mix-blend-mode: darken;
+  opacity: 1;
+  position: absolute;
+}
+
+.sphere_icon {
+  top: 708px;
+  width: 725px;
+  height: 424px;
+  background: transparent url("../data_image/sphere.png") 0% 0% no-repeat
+    padding-box;
+  mix-blend-mode: darken;
+  opacity: 1;
+  position: absolute;
+}
+
+.hexagon_icon {
+  top: 230px;
+  left: 59px;
+  width: 486px;
+  height: 557px;
+  transform: matrix(0.53, -0.85, 0.85, 0.53, 0, 0);
+  background: transparent url("../data_image/hexagon.png") 0% 0% no-repeat
+    padding-box;
+  mix-blend-mode: darken;
+  opacity: 1;
+  position: absolute;
+}
+
+.cont_rentals {
+  top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: -40px;
+  margin-bottom: 100px;
+  padding: 0 60px 60px 60px;
+  background: white 0% 0% no-repeat padding-box;
+  border-radius: 30px;
+  width: 90vw;
+  height: 100%;
+  z-index: 1;
+  font-weight: 600;
+}
+
+/*********************************** ITEMS ***********************************/
+
+.switch-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.switch-button {
+  position: relative;
+  background-color: #e0e0e0;
+  color: #555;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.switch-button.active {
+  background-color: #000038;
+  color: white;
+}
+
+.switch-handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 40%;
+  height: 96%;
+  background-color: #fff;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+.switch-button.active .switch-handle {
+  transform: translateX(100%);
+}
+
+.filter-container {
+  margin: 30px 0 20px 0;
+  color: black;
+  width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-container label {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.filter-container button {
+  width: 50px;
+  height: 30px;
+  border-radius: 10px;
+}
+
+.filter-dropdown {
+  display: flex;
+  gap: 10px;
+  margin: 0 10px 0 10px;
+}
+
+.minAmount,
+.maxAmount {
+  border-radius: 30px;
+  width: 85px;
+  height: 30px;
+  color: rgb(100, 100, 100);
+  padding: 5px;
+}
+
+.cont_items {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Change to a single column for smaller screens */
+  height: 100%;
+  position: relative;
+  margin: auto;
+  margin-top: 0px;
+  padding: 0 10px 0 10px;
+  padding-top: 2px;
+}
+
+.items {
+  position: inherit;
+  /* margin: auto; */
+  margin-top: 40px;
+  border: solid gray 0px;
+  border-radius: 40px;
+  height: 500px;
+  width: 100%; /* Ensure items take full width on smaller screens */
+  margin: 20px 0; /* Add some spacing between items */
+  padding: 20px;
+}
+
+.posted-rental {
+  position: inherit;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.items:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.cont_items .items img {
+  margin: auto;
+  position: inherit;
+  border-radius: 20px;
+  height: 260px;
+  width: 460px;
+}
+
+.cont_items .items .item-record {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 20px 20px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.4;
+  justify-content: space-between;
+}
+
+.item-bottom_cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.item-loc {
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 200;
+}
+
+.item-price,
+.item-features {
+  font-size: 14px;
+  font-weight: 400;
+  width: calc(100% / 2);
+}
+
+.item-price label,
+.item-features label {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.cont_rentals .see {
+  position: relative;
+  text-align: center;
+  margin: 50px 0 30px 0;
+}
+
+/************************************************** RESPONSIVENESS **************************************************/
+
+@media screen and (max-width: 480px) {
+  .cont_rentals {
+    margin: auto;
+    margin-top: -40px;
+    margin-bottom: 100px;
+    padding: 0px;
+    border-radius: 10px;
+    width: 90vw;
+    height: 100%;
+    z-index: 1;
+    font-weight: 300;
+  }
+
+  .items {
+    border: solid rgb(216, 213, 213) 1px;
+    height: 450px;
+  }
+
+  .cont_rentals {
+    margin: auto;
+    margin-top: -40px;
+    margin-bottom: 100px;
+    padding: 0px;
+    border-radius: 10px;
+    width: 90vw;
+    height: 100%;
+    z-index: 1;
+    font-weight: 300;
+  }
+
+  .cont_rentals h2 {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .cont_items {
+    display: grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    height: 100%;
+    position: relative;
+    margin: auto;
+    margin-top: 0px;
+    padding: 0 10px 0 10px;
+    padding-top: 2px;
+  }
+
+  .cont_items .items img {
+    margin: 0;
+    border-radius: 10px;
+    height: 200px;
+    width: 100%;
+  }
+}
+
+/************************************************** FOOTER **************************************************/
+
+footer {
+  width: 100vw;
+  background-color: #1d1d1d;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  margin-top: 200px;
+  bottom: 0;
+}
+
+/************************************************** LOGIN **************************************************/
+
+.login {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 101;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: block;
+  position: fixed;
+  z-index: 2;
+  max-width: 600px;
+  width: 100%;
+  background: white;
+  padding: 30px 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.container form {
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.container .form_content {
+  display: flex;
+  align-items: center;
+}
+
+.form_content .login_form,
+.form_content .signup_form {
+  width: 100%;
+}
+
+form .form_content .title {
+  position: relative;
+  margin: 0 0 0 230px;
+  font-size: 30px;
+  font-weight: 500;
+  color: #000038;
+}
+
+form .form_content .title:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 25px;
+  background: #000038;
+}
+
+form .signup_form .title:before {
+  width: 25px;
+}
+
+form .form_content .input_boxes {
+  margin: 50px 0 50px 0;
+}
+
+form .form_content .input_box {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
+}
+
+form .form_content .input_box img {
+  height: 22px;
+  width: 27px;
+}
+
+.form_content .input_box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+  margin: 0 0 20px 20px;
+  font-size: 20px;
+  font-weight: 500;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.5s ease;
+}
+
+.form_content .input_box input:focus,
+.form_content .input_box input:valid {
+  border-color: #000038;
+}
+
+form .form_content .text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  padding: 1px 90px;
+}
+
+form .form_content .text a {
+  padding: 0 0 0 125px;
+}
+
+form .form_content .text a:hover {
+  text-decoration: underline;
+}
+
+form .form_content .button {
+  color: white;
+  margin-top: 30px;
+}
+
+form .form_content .button input {
+  color: black;
+  background: #f8c230;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+form .form_content .button input:hover {
+  background: lightgoldenrodyellow;
+}
+
+form .form_content .text label {
+  color: #000038;
+}
+
+form .form_content .text label:hover {
+  text-decoration: underline;
+}
+
+.input_boxes label.sub_title {
+  color: #000038;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.close-popup {
+  scale: 2;
+  float: right;
+  cursor: pointer;
+}
+
+/************************************************** MESSAGING **************************************************/
+
+.wrapper {
+  top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  margin-top: -40px;
+  margin-bottom: 100px;
+  padding: 60px;
+  background: white 0% 0% no-repeat padding-box;
+  border-radius: 30px;
+  width: 90vw;
+  height: 100vh;
+  z-index: 1;
+  font-weight: 600;
+}
+
+header {
+  width: 25vw;
+  height: 100%;
+  align-items: center;
+  padding: 20px 20px;
+  background: #000038;
+  border-radius: 30px 0 0 30px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  margin-bottom: 30px;
+  font-size: 26px;
+  color: white;
+  text-align: center;
+}
+
+.users {
+  padding: 2px 30px;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.wrapper img {
+  object-fit: cover;
+  border: 1px solid #000038;
+  border-radius: 50%;
+}
+
+:is(.wrapper, .users-list) .content {
+  display: flex;
+  align-items: center;
+}
+
+.content img {
+  width: 80px;
+  height: 75px;
+}
+
+:is(.wrapper, .users-list) .details a {
+  margin: 15px;
+  line-height: 1.5;
+  color: rgb(255, 255, 255);
+}
+
+:is(.wrapper, .users-list) .details p {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+:is(.wrapper, .users-list) label {
+  font-size: 24px;
+  font-weight: 500px;
+  margin-bottom: 20px;
+}
+
+.users .search {
+  margin: 40px 0 10px 0;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.users .search .text {
+  font-size: 20px;
+}
+
+.users .search input {
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 30px;
+  padding: 5px 30px;
+  font-size: 20px;
+}
+
+.chatBoxes {
+  overflow-y: auto;
+}
+
+.users-list a {
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(202, 200, 200);
+}
+
+.active_user .status-dot {
+  color: rgb(60, 212, 60);
+  margin-right: 5px;
+}
+
+.users-list a .status-dot {
+  color: rgb(60, 212, 60);
+}
+
+.users-list a .status-dot.offline {
+  color: #67676a;
+}
+
+.details .status-dot.offline {
+  color: #67676a;
+  margin-right: 5px;
+}
+
+.active_user {
+  display: flex;
+}
+
+.users-list a .content p {
+  color: #67676a;
+}
+
+/*********************************** MESSAGE BOX ***********************************/
+
+.chatBox {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.chatBox .content {
+  padding: 5px 30px;
+  background-color: rgb(247, 247, 247);
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.chatBox .content .details {
+  align-items: center;
+}
+
+.chatBox .content a i {
+  margin-left: 20px;
+  font-size: 30px;
+}
+
+.chatBox .content img {
+  margin-left: 20px;
+}
+
+.chat-cont {
+  height: 500px;
+  padding: 10px 30px 20px 30px;
+  overflow-y: auto;
+}
+
+.chat-cont .chat {
+  margin: 15px 0;
+}
+
+.chat-cont .chat p {
+  word-wrap: break-word;
+  padding: 8px 16px;
+}
+
+.chat-cont .outgoing {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.outgoing .details {
+  margin-left: auto;
+  max-width: calc(100% - 130px);
+}
+
+.outgoing .details p {
+  background: #e9e9e9;
+  color: #333;
+  padding: 15px 25px;
+  border-radius: 30px 30px 0 30px;
+}
+
+.chat-cont .incoming {
+  display: flex;
+  align-items: flex-end;
+}
+
+.chat-cont .incoming img {
+  height: 35px;
+  width: 35px;
+}
+
+.chat-cont .incoming .details {
+  margin-left: 10px;
+  margin-right: auto;
+  max-width: calc(100% - 130px);
+}
+
+.incoming .details p {
+  background: #333;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 30px 30px 30px 0;
+}
+
+.typing-area {
+  padding: 18px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.typing-area input {
+  height: 45px;
+  width: calc(100% - 58px);
+  font-size: 16px;
+  padding: 0 13px;
+  border: 1px solid #e6e6e6;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+}
+.typing-area button {
+  color: #fff;
+  width: 55px;
+  border: none;
+  outline: none;
+  background: #333;
+  font-size: 19px;
+  cursor: pointer;
+  opacity: 0.7;
+  border-radius: 0 5px 5px 0;
+  transition: all 0.3s ease;
+}
+.typing-area button.active {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+
+  :is(.users, .users-list) .content .details {
+    margin-left: 15px;
+  }
+
+  .users-list a {
+    padding-right: 10px;
+  }
+
+  .chat-area header {
+    padding: 15px 20px;
+  }
+  .chat-box {
+    min-height: 400px;
+    padding: 10px 15px 15px 20px;
+  }
+  .chat-box .chat p {
+    font-size: 15px;
+  }
+  .chat-box .outogoing .details {
+    max-width: 230px;
+  }
+  .chat-box .incoming .details {
+    max-width: 265px;
+  }
+  .incoming .details img {
+    height: 30px;
+    width: 30px;
+  }
+  .chat-area form {
+    padding: 20px;
+  }
+  .chat-area form input {
+    height: 40px;
+    width: calc(100% - 48px);
+  }
+  .chat-area form button {
+    width: 45px;
+  }
+
+  :is(.users, .users-list) .content .details {
+    margin-left: 15px;
+  }
+
+  .users-list a {
+    padding-right: 10px;
+  }
+
+  .chat-area header {
+    padding: 15px 20px;
+  }
+  .chat-box {
+    min-height: 400px;
+    padding: 10px 15px 15px 20px;
+  }
+  .chat-box .chat p {
+    font-size: 15px;
+  }
+  .chat-box .outogoing .details {
+    max-width: 230px;
+  }
+  .chat-box .incoming .details {
+    max-width: 265px;
+  }
+  .incoming .details img {
+    height: 30px;
+    width: 30px;
+  }
+  .chat-area form {
+    padding: 20px;
+  }
+  .chat-area form input {
+    height: 40px;
+    width: calc(100% - 48px);
+  }
+  .chat-area form button {
+    width: 45px;
+  }
+  .text-right {
+    text-align: right;
+  }
+}
