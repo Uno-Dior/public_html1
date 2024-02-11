@@ -48,15 +48,15 @@ if ($resultFetchData->num_rows > 0) {
     $houseType = $userData['house_type'];
 
     // Display the user details
-    echo '
-        <div class="user-detail">
-            <img src="' . $houseImage . '" alt="' . $houseName . '">
-            <div class="details">
-                <span><a style="color:black">' . $houseName . '</a></span>
-                <p>' . $houseType . '</p>
-            </div>
-        </div>
-    ';
+    // echo '
+    //     <div class="user-detail">
+    //         <img src="' . $houseImage . '" alt="' . $houseName . '">
+    //         <div class="details">
+    //             <span><a style="color:black">' . $houseName . '</a></span>
+    //             <p>' . $houseType . '</p>
+    //         </div>
+    //     </div>
+    // ';
 } else {
     // Handle the case where no rows are returned
     echo 'User not found';
@@ -104,13 +104,17 @@ if ($resultFetchData->num_rows > 0) {
 
                     <section class="chatBox">
                         <div class="user-content">
-                            <div class="user-detail">
-                            <img src="<?php echo $_SESSION['houseOptionsData']['house_image']; ?>" alt="<?php echo $_SESSION['houseOptionsData']['house_name']; ?>">
-                            <div class="details">
-                                <span><a style="color:black"><?php echo $_SESSION['houseOptionsData']['house_name']; ?></a></span>
-                                <p><?php echo $_SESSION['houseOptionsData']['house_type']; ?></p>
-                            </div>
-                            </div>
+                        <?php
+                            echo '
+                                <div class="user-detail">
+                                    <img src="' . $houseImage . '" alt="' . $houseName . '">
+                                    <div class="details">
+                                        <span style="color:black">' . $houseName . '</span>
+                                        <p>' . $houseType . '</p>
+                                    </div>
+                                </div>
+                            ';
+                        ?>
                         </div>
                         
                         <div class="chat-cont"  id="loadchat">

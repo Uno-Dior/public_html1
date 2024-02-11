@@ -696,6 +696,18 @@ a.btn-user {
   color: #67676a;
 }
 
+.user-detail img {
+  width: 100px;
+  height: 100px;
+  border-radius: 0;
+}
+
+.user-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 /*********************************** MESSAGE BOX ***********************************/
 
 .chatBox {
@@ -716,7 +728,11 @@ a.btn-user {
 }
 
 .chatBox .user-content .details {
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0 0 30px;
+  font-size: 24px;
 }
 
 .chatBox .user-content a i {
