@@ -109,7 +109,7 @@ if ($resultFetchData->num_rows > 0) {
                                 <div class="user-detail">
                                     <img src="' . $houseImage . '" alt="' . $houseName . '">
                                     <div class="details">
-                                        <span style="color:black">' . $houseName . '</span>
+                                        <span style="color:black">' . $houseName . ' </span>
                                         <p>' . $houseType . '</p>
                                     </div>
                                 </div>
