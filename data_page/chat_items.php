@@ -15,8 +15,8 @@ if ($sql && mysqli_num_rows($sql) > 0) {
         $row['username'] = !empty($usernameRow['username']) ? $usernameRow['username'] : '';
 
         // Display user details with hidden input fields
-        echo "<a class='btn-user' onclick='showChatDetails({$row['id']})'>"; // Open anchor tag
-            echo "<div class='user-details'>";
+        echo "<a class='btn-user' data-id='{$row['id']}' onclick='showChatDetails({$row['id']})'>"; // Include data-id attribute
+        echo "<div class='user-details'>";
                 echo "<input type='hidden' id='user-id-{$row['id']}' value='{$row['id']}'>";
                 echo "<input type='hidden' id='house-id-{$row['id']}' value='{$row['house_id']}'>";
                 echo "<input type='hidden' id='owner-user-id-{$row['id']}' value='{$row['owner_user_id']}'>";

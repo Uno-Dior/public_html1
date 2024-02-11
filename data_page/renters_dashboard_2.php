@@ -1,6 +1,5 @@
 <?php
 session_start();
-// print_r($_SESSION);
 require_once '../mysql/conn.php';
 
 // Check if the user is already logged in
@@ -60,6 +59,27 @@ if ($resultFetchData->num_rows > 0) {
 } else {
     // Handle the case where no rows are returned
     echo 'User not found';
+}
+
+// Check if $houseImage, $houseName, and $houseType are not set
+if (!isset($houseImage) || !isset($houseName) || !isset($houseType)) {
+    // Get the id of the first user-details
+    $sqlFirstUserId = "
+        SELECT id
+        FROM chat_users
+        LIMIT 1
+    ";
+
+    $resultFirstUserId = $conn->query($sqlFirstUserId);
+
+    if ($resultFirstUserId->num_rows > 0) {
+        $firstUserData = $resultFirstUserId->fetch_assoc();
+        $firstUserId = $firstUserData['id'];
+
+        // Redirect to the first user's id
+        header("Location: ../data_page/renters_dashboard_2.php?id=$firstUserId");
+        exit();
+    }
 }
 ?>
 
@@ -146,11 +166,11 @@ if ($resultFetchData->num_rows > 0) {
 
         <!-- <script src="../jscripts/chat copy.js"></script> -->
 
-        <script src="/jscripts/dropdownfeat.js"></script>
+<script src="/jscripts/dropdownfeat.js"></script>
         
-        <script src="/jscripts/chatBoxFeat.js"></script>
+<script src="/jscripts/chatBoxFeat.js"></script>
         
-        <script>
+<script>
     $(document).ready(function () {
         let land_id = '<?= $_SESSION['rentalOptionsData']["owner_user_id"] ?>';
 
@@ -203,6 +223,20 @@ if ($resultFetchData->num_rows > 0) {
         }, 1000);
     });
 </script>
+
+<!-- <script>
+    // Automatically open the first user-details and set its id in the URL
+    $(document).ready(function () {
+        // Get the id of the first user-details
+        var firstUserId = $(".btn-user:first").data("id");
+
+        // Check if house details are not yet defined
+        if (typeof $houseImage === 'undefined' || typeof $houseName === 'undefined' || typeof $houseType === 'undefined') {
+            // Call the showChatDetails function with the first user's id
+            showChatDetails(firstUserId);
+        }
+    });
+</script> -->
 
 <script>
     function showChatDetails(id) {
