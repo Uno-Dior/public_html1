@@ -38,6 +38,11 @@ if ($resultFetchData === false) {
     die('Error in SQL result: ' . $stmtFetchData->error);
 }
 
+$defaultHouseImage = "../data_image/favicon.png";
+$defaultHouseName = "No Available Inquiries.";
+$defaultHouseType = "";
+
+// Check if there are chat users
 if ($resultFetchData->num_rows > 0) {
     $userData = $resultFetchData->fetch_assoc();
 
@@ -45,24 +50,12 @@ if ($resultFetchData->num_rows > 0) {
     $houseImage = $userData['house_image'];
     $houseName = $userData['house_name'];
     $houseType = $userData['house_type'];
-
-    // Display the user details
-    // echo '
-    //     <div class="user-detail">
-    //         <img src="' . $houseImage . '" alt="' . $houseName . '">
-    //         <div class="details">
-    //             <span><a style="color:black">' . $houseName . '</a></span>
-    //             <p>' . $houseType . '</p>
-    //         </div>
-    //     </div>
-    // ';
 } else {
-    // Handle the case where no rows are returned
-    echo 'User not found';
-}
+    // Use default values if there are no chat users
+    $houseImage = $defaultHouseImage;
+    $houseName = $defaultHouseName;
+    $houseType = $defaultHouseType;
 
-// Check if $houseImage, $houseName, and $houseType are not set
-if (!isset($houseImage) || !isset($houseName) || !isset($houseType)) {
     // Get the id of the first user-details
     $sqlFirstUserId = "
         SELECT id
@@ -82,7 +75,6 @@ if (!isset($houseImage) || !isset($houseName) || !isset($houseType)) {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

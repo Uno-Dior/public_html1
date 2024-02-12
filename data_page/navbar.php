@@ -1,5 +1,5 @@
 <?php
-print_r($_SESSION);
+// print_r($_SESSION);
 require('../includes/account-details.php');
 ?>
 <div class="navbar-container">

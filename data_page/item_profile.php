@@ -67,6 +67,22 @@ if ($result->num_rows > 0) {
         </div>
     </div>
 
+    <!-- Modal -->
+    <div id="ConfirmationModal" class="modal">
+        <div class="Modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <?php if (isset($incompleteData) && $incompleteData): ?>
+                <!-- Display modal informing user to complete personal data -->
+                <p></p>
+                <button onclick="redirectDashboard()">OK</button>
+            <?php else: ?>
+                <p>Are you sure you want to APPLY for this rental?</p>
+                <button onclick="ConfirmInquiry()">Yes</button>
+                <button onclick="closeModal()">No</button>
+            <?php endif; ?>
+        </div>
+    </div>
+
     <?php include 'navbar.php'; ?>
 
 
@@ -268,7 +284,106 @@ if ($result->num_rows > 0) {
     }
 </script>
 
+<script>
+    function openModal() {
+        // Extract the 'id' parameter from the URL and pass it to checkUserData()
+        var urlParams = new URLSearchParams(window.location.search);
+        var rentOptionId = urlParams.get('id');
+    
+        // Check if 'id' is present in the URL
+        if (!rentOptionId) {
+            console.error('Error: ID not found in the URL');
+            return;
+        }
+    
+        console.log('rentOptionId in openModal:', rentOptionId); // Add this line
+    
+        var modal = document.getElementById('confirmationModal');
+        modal.style.display = 'flex';
+    
+        checkUserData(rentOptionId);
+    }
 
+    function closeModal() {
+        var modal = document.getElementById('confirmationModal');
+        modal.style.display = 'none';
+    }
+    
+     function confirmInquiry() {
+        // Extract the 'id' parameter from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var rentOptionId = urlParams.get('id');
+    
+        // Check if 'id' is present in the URL
+        if (!rentOptionId) {
+            console.error('Error: ID not found in the URL');
+            return;
+        }
+    
+        console.log('Rent Option ID:', rentOptionId);  // Add this line
+    
+        // Create a new XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+    
+        // Set up the request
+        xhr.open('POST', 'rent_house.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    
+        // Define what happens on successful data submission
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // Parse the response from the server
+                var response = JSON.parse(xhr.responseText);
+    
+                // Check if the inquiry was confirmed successfully
+                if (response.success) {
+                    // Display a success message
+                    alert('Application Confirmed!');
+    
+                    // Close the modal after confirming
+                    closeModal();
+    
+                    // Redirect to the confirmation page with necessary data
+                    window.location.href = '../data_page/renters_dashboard_3.php?rent_option_id=' + encodeURIComponent(rentOptionId);
+                } else {
+                    // Display an error message
+                    alert('Error confirming inquiry: ' + response.message);
+                }
+            }
+        };
+    
+        // Get the data from the form (if needed) and send it to the server
+        var formData = 'rent_option_id=' + encodeURIComponent(rentOptionId);
+        xhr.send(formData);
+    }
+
+
+    /// Function to check user data and update modal content
+    function checkUserData(rentOptionId) {
+        var modalContent = document.querySelector('.modal-content p');
+
+        // Assuming you have a variable incompleteData containing the user data check result
+        var incompleteData = <?php echo json_encode($incompleteData ?? false); ?>;
+
+        if (incompleteData) {
+            // User has incomplete data
+            modalContent.innerHTML = 'Please make sure that you have completed your Profile Details:<br>Profile Picture<br>Personal Information<br>Parent\'s Details';
+        } else {
+            // User has completed data
+            modalContent.innerHTML = 'Are you sure you want to APPLY for this rental?';
+        }
+
+        // You can use rentOptionId in your logic here if needed
+    }
+</script>
+
+
+
+<script>
+    function redirectDashboard() {
+        window.location.href = '../data_page/renters_dashboard_3.php';
+    }
+</script>
 <!-- <script>
     function openModal() {
         var modal = document.getElementById('confirmationModal');

@@ -35,6 +35,6 @@ if ($sql && mysqli_num_rows($sql) > 0) {
     }
 } else {
     // Handle the case where no rows are returned
-    echo "<p style='color:white'>No Chats</p>";
+    echo "<p style='color:white' class='no_chats'>No Available Chats</p>";
 }
 ?>
